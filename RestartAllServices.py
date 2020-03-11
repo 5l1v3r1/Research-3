@@ -3,7 +3,6 @@ import sys
 import time
 import ctypes
 import subprocess
-import concurrent.futures
 import datetime
 
 try:
