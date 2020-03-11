@@ -1,4 +1,7 @@
 # Research
+
+![xd](https://img.shields.io/badge/Python-3-blue.svg "Python 3")
+
 Tools and scripts to use while hunting bugs and potential vulnerabilities
 
 #### FindAutoElevatedApplications.py
