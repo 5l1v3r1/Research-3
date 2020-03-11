@@ -8,7 +8,7 @@ import datetime
 try:
 	import psutil
 except ImportError:
-	sys.exit("[-] Import error, psutil is not installed")
+	sys.exit("{time} [-] Import error, psutil is not installed".format(time=datetime.datetime.now()))
 
 class service:
 	def __init__(self):
@@ -60,7 +60,7 @@ class service:
 def main():
 	""" Simple elevation check using WinAPI """
 	if not bool(ctypes.windll.shell32.IsUserAnAdmin()):
-		print("{time} - [-] Debug - We are not running elevated, cannot proceed".format(time=datetime.datetime.now()))
+		print("{time} [-] We are not running elevated, cannot proceed".format(time=datetime.datetime.now()))
 		return False
 
 	""" Stop and restore service to previous state """
@@ -73,20 +73,20 @@ def main():
 		if query["username"] == "LocalSystem":
 			status = service().stop(name)
 			if status:
-				print("{time} - [+] Debug - Successfully stopped service ({name}) return code ({code})".format(time=datetime.datetime.now(),
+				print("{time} [+] Successfully stopped service ({name}) return code ({code})".format(time=datetime.datetime.now(),
 						name=name, code=status))
 			else:
-				print("{time} - [-] Debug - Unable to stop service ({name}) return code ({code})".format(time=datetime.datetime.now(),
+				print("{time} [-] Unable to stop service ({name}) return code ({code})".format(time=datetime.datetime.now(),
 						name=name, code=status))
 
 			time.sleep(5)
 
 			status = service().start(name)	
 			if status:
-				print("{time} - [+] Debug - Successfully started service ({name}) return code ({code})".format(time=datetime.datetime.now(),
+				print("{time} [+] Successfully started service ({name}) return code ({code})".format(time=datetime.datetime.now(),
 						name=name, code=status))
 			else:
-				print("{time} - [-] Debug - Unable to start service ({name}) return code ({code})".format(time=datetime.datetime.now(),
+				print("{time} [-] Unable to start service ({name}) return code ({code})".format(time=datetime.datetime.now(),
 						name=name, code=status))
 
 	""" Start and restore service to previous state """
@@ -97,20 +97,20 @@ def main():
 	for name in stopped:
 		status = service().start(name)
 		if status:
-			print("{time} - [+] Debug - Successfully started service ({name}) return code ({code})".format(time=datetime.datetime.now(),
+			print("{time} [+] Successfully started service ({name}) return code ({code})".format(time=datetime.datetime.now(),
 					name=name, code=status))
 		else:
-			print("{time} - [-] Debug - Unable to start service ({name}) return code ({code})".format(time=datetime.datetime.now(),
+			print("{time} [-] Unable to start service ({name}) return code ({code})".format(time=datetime.datetime.now(),
 					name=name, code=status))
 
 		time.sleep(5)
 
 		status = service().stop(name)
 		if status:
-			print("{time} - [+] Debug - Successfully stopped service ({name}) return code ({code})".format(time=datetime.datetime.now(),
+			print("{time} [+] Successfully stopped service ({name}) return code ({code})".format(time=datetime.datetime.now(),
 					name=name, code=status))
 		else:
-			print("{time} - [-] Debug - Unable to stop service ({name}) return code ({code})".format(time=datetime.datetime.now(),
+			print("{time} [-] Unable to stop service ({name}) return code ({code})".format(time=datetime.datetime.now(),
 					name=name, code=status))
 
 if __name__ == "__main__":
