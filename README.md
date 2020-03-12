@@ -5,7 +5,7 @@
 Tools and scripts to use while hunting bugs and potential vulnerabilities
 
 ### FindAutoElevatedApplications.py
-Scan the given directory for auto elevated applications Use the results to create a process with the create or runas verb.
+Scan the given directory for auto elevated applications. Pass parameter "runas" or "create" to use the results to create a process with the create or runas verb.
 
 ##### Usage:
 ```
