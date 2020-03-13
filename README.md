@@ -15,7 +15,7 @@ python FindAutoElevatedApplications.py C:\Windows create
 ```
 
 ### RestartAllServices.py
-Parses all the running and stopped services that use SYSTEM account. The running services will be restarted and the stopped services will be started and stopped.
+Parses all the running and stopped services that use SYSTEM account. The running services will be restarted and the stopped services will be started and stopped. This utility will assist you while using Process Monitors to monitor activity and behavior of a large scale of services, when a new Windows version has been released.
 
 ##### Usage:
 ```
@@ -23,7 +23,7 @@ python RestartAllServices.py
 ```
 
 ### RunAs.py
-Create a high integrity process using Windows API call ShellExecuteW, UAC will prompt if activated.
+Create a high integrity process using Windows API call ShellExecuteW, UAC will prompt if set to highest level or if the target process can't auto elevate.
 
 ##### Usage:
 ```
