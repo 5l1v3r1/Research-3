@@ -30,7 +30,7 @@ Create a high integrity process using Windows API call ShellExecuteW, UAC will p
 python RunAs.py c:\windows\notepad.exe
 ```
 
-### HijackClass.py.py
+### HijackClass.py
 Hijack a HKCU registry class by providing class type and path to payload. 
 
 ##### Usage:
