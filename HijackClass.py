@@ -26,11 +26,21 @@ class registry:
 			if DelegateExecute:
 					winreg.SetValueEx(self.key, "DelegateExecute", 0, winreg.REG_SZ, None)
 			winreg.CloseKey(self.key)
+		try:
+			self.key = winreg.CreateKey(self.hive, "Software\\Classes\\{type}\\shell\\runas\\command".format(type=type))
+		except Exception:
+			return False
+		else:
+			winreg.SetValueEx(self.key, None, 0, winreg.REG_SZ, value)
+			if DelegateExecute:
+					winreg.SetValueEx(self.key, "DelegateExecute", 0, winreg.REG_SZ, None)
+			winreg.CloseKey(self.key)
 
 	""" Dirty cleans the class """
 	def delete(self, type):
 		try:
 			self.key = winreg.DeleteKey(self.hive, "Software\\Classes\\{type}\\shell\\open\\command".format(type=type))
+			self.key = winreg.DeleteKey(self.hive, "Software\\Classes\\{type}\\shell\\runas\\command".format(type=type))
 			winreg.CloseKey(self.key)
 		except Exception:
 			return False
